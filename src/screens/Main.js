@@ -5,10 +5,13 @@ import AppColors from '../utils/theme/AppColors';
 
 import Messages from '../utils/constant/Messages';
 import Home from './home/Home';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions/index';
 
 const initRoute = [
 
+    { key: Messages.findYard, title: Messages.findYard, component: <Home />, iconName: 'location' },
     { key: Messages.findYard, title: Messages.findYard, component: <Home />, iconName: 'location' },
 
 
@@ -21,6 +24,7 @@ class Main extends Component {
             mainContent: <Home />
         }
     }
+    
 
     renderTabBar() {
         return <View style={styles.containerTabBar}>
@@ -100,13 +104,13 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        condition: state.condition
+      userData: state.userData,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(todoActions, dispatch)
+      actions: bindActionCreators(ActionCreators, dispatch)
     };
 }
 

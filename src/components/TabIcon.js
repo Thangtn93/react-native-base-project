@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 // import { connect } from 'react-redux';
-
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 
@@ -45,12 +45,12 @@ class TabIcon extends Component {
 };
 
 
-// const mapStateToProps = state => ({
+const mapStateToProps = state => ({
 
-// });
+});
 
 
-// const mapDispatchToProps = {}
+const mapDispatchToProps = {}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(TabIcon);
-export default TabIcon;
+export default connect(mapStateToProps, mapDispatchToProps)(TabIcon);
+// export default TabIcon;

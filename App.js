@@ -1,53 +1,24 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Main from './src/screens/index';
+import store from './src/reducers/configureStore'
+import { connect, Provider } from 'react-redux';
+import { Router } from 'react-native-router-flux';
 
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import HeaderBack from './src/components/HeaderBack'
-import Loading from './src/components/Loading'
-const myIcon = <Icon name="rocket" size={30} color="#900" />;
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+// let store = createStore(todoApp, applyMiddleware(thunk));
+const RouterWithRedux = connect()(Router);
+
+
 export default class App extends React.Component {
+
   render() {
     return (
-      // <View style={styles.container}>
-      //   {/* <HeaderBack headerName="Chat nhóm" /> */}
-      //   <Text style={styles.welcome}>Welcome to React Native!</Text>
-      //   <Text style={styles.instructions}>To get started, edit App.js</Text>
-      //   <Text style={styles.instructions}>{instructions}</Text>
-      //   <Icon name="rocket" size={30} color="#900" />
-      // </View>
-      <Loading/>
+      <Provider store={store}>
+        <RouterWithRedux scenes={Main} style={{ width: '100%', height: '100%', backgroundColor: '#fff', }} />
+
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+

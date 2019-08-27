@@ -3,8 +3,7 @@ import { Platform, View, Text, FlatList, StyleSheet, Image, TouchableOpacity, Ac
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions/index';
 import { bindActionCreators } from 'redux';
-import {Actions} from 'react-native-router-flux'
-class Home extends React.Component {
+class Setting extends React.Component {
   
   
 //   handleIncrease = () => {
@@ -17,7 +16,8 @@ class Home extends React.Component {
           
           <Text onPress={()=>this.props.actions.changeCondition({ isLoading: false })}>CLICK ME </Text>
        <Text >{this.props.userData.isLoading===true?'1':'2'}</Text>
-       <Text onPress={()=>Actions.setting()}>Change Screen</Text>
+       <Text>Setting </Text>
+       
         </View>
       );
     }
@@ -34,4 +34,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Setting);
